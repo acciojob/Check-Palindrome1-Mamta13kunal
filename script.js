@@ -1,12 +1,16 @@
-// complete the given function
+function checkPalindrome(s) {
 
-function palindrome(str){
-	var isPalindrome = function(s) {
-    var strippedString = s.replace(/\W/g, '');
-    var reversedString = strippedString.split('').reverse().join('');
-    
-    return strippedString.toLowerCase() == reversedString.toLowerCase();
-};
+    // find the length of a string
+    const len = string.length;
 
+    // loop through half of the string
+    for (let i = 0; i < len / 2; i++) {
+
+        // check if first and last string are same
+        if (string[i] !== string[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
 }
-module.exports = palindrome
+
