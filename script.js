@@ -1,16 +1,20 @@
-function checkPalindrome(s) {
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser')
 
-    // find the length of a string
-    const len = string.length;
+const app = express();
 
-    // loop through half of the string
-    for (let i = 0; i < len / 2; i++) {
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-        // check if first and last string are same
-        if (string[i] !== string[len - 1 - i]) {
-            return false;
-        }
-    }
-    return true;
-}
+const isPalindrome = require('./script');
 
+app.use(express.static(__dirname))
+
+app.post('/palindromechecker',(req, res) => {
+  const str = req.body.str
+  const answer = isPalindrome(str) 
+  res.send({message:answer})
+})
+
+module.exports = app;
